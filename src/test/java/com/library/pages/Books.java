@@ -14,8 +14,9 @@ public class Books extends BasePage{
 
     public String findBook(String bookName){
 
+        BrowserUtil.sleep(1);
         searchBox.sendKeys(bookName+ Keys.ENTER);
-        BrowserUtil.sleep(2);
+        BrowserUtil.sleep(1);
 
         WebElement actualBookName = Driver.getDriver().findElement(By.xpath("//td[3]"));
         return actualBookName.getText();

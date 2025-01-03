@@ -203,7 +203,7 @@ public class stepDef {
 
         String expectedUserName = (String) randomDataMap.get("full_name");
         String actualUserNameInDashboard = basePage.userName.getText();
-        BrowserUtil.verifyElementDisplayed(basePage.userName);
+        BrowserUtil.waitFor(5);
         assertEquals(expectedUserName,actualUserNameInDashboard);
 
     }

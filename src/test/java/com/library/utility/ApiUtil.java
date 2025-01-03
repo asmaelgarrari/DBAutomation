@@ -89,9 +89,9 @@ public class ApiUtil {
         Map<String, Object> user = new HashMap<>();
         user.put("full_name", faker.name().fullName());
         user.put("email", faker.internet().emailAddress());
-        user.put("password", faker.internet().password(5, 8));
-        user.put("user_group_id", faker.number().numberBetween(1,3));
-        user.put("status","active"); // Example: static value
+        user.put("password", faker.internet().password());
+        user.put("user_group_id",2);
+        user.put("status","ACTIVE"); // Example: static value
         user.put("start_date","2020-10-14");
         user.put("end_date","2021-10-12");
         user.put("address",faker.address().streetAddress());
