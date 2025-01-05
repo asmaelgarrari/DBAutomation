@@ -3,16 +3,15 @@ package com.library.pages;
 import com.library.utility.ApiUtil;
 import com.library.utility.BrowserUtil;
 import com.library.utility.Driver;
-import io.cucumber.java.zh_cn.假如;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Map;
 
-public class LibraryPage {
+public class LoginPage {
 
-    public LibraryPage() {
+    public LoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

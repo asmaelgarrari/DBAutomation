@@ -15,12 +15,6 @@ public  class BasePage {
     @FindBy(xpath = "//span[.='Books']")
     public WebElement books;
 
-    @FindBy(xpath = "//span[.='Users']")
-    public WebElement users;
-
-    @FindBy(xpath = "//a[@id='navbarDropdown']")
-    public WebElement userIcon;
-
     @FindBy(xpath = "//a[contains(.,'Library')]")
     public WebElement dashBoard;
 

@@ -1,14 +1,11 @@
 package com.library.step_definitions;
 
-import com.google.protobuf.Api;
-import com.google.protobuf.StringValue;
 import com.library.pages.BasePage;
 import com.library.pages.Books;
-import com.library.pages.LibraryPage;
+import com.library.pages.LoginPage;
 import com.library.utility.ApiUtil;
 import com.library.utility.BrowserUtil;
 import com.library.utility.DB_Util;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,9 +15,7 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +30,7 @@ public class stepDef {
     JsonPath jsonPath;
     String expectedValue;
     Map<String, Object> randomDataMap = new HashMap<>();
-    LibraryPage page = new LibraryPage();
+    LoginPage page = new LoginPage();
     BasePage basePage = new BasePage();
     Books books = new Books();
     String token = "";
@@ -176,7 +171,6 @@ public class stepDef {
         // DB part
 
         String bookId = jsonPath.getString("book_id");
-
         DB_Util.runQuery("Select name from books where id ="+ bookId);
 
        String actualBookNameInDB =  DB_Util.getFirstRowFirstColumn();
@@ -197,13 +191,15 @@ public class stepDef {
         String email =(String) randomDataMap.get("email");
         String password =(String) randomDataMap.get("password");
         page.login(email,password);
+        Assert.assertTrue(basePage.dashBoard.isDisplayed());
     }
     @Then("created user name should appear in Dashboard Page")
     public void created_user_name_should_appear_in_dashboard_page(){
 
         String expectedUserName = (String) randomDataMap.get("full_name");
+        BrowserUtil.waitFor(1);
         String actualUserNameInDashboard = basePage.userName.getText();
-        BrowserUtil.waitFor(5);
+
         assertEquals(expectedUserName,actualUserNameInDashboard);
 
     }
